@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "0",
+    "hash" : "755984959",
     "id" : "C6882769",
-    "lastKnownWriteTime" : 1522340138,
-    "last_content_update" : 1522340138,
+    "lastKnownWriteTime" : 1522349179,
+    "last_content_update" : 1522349179795,
     "path" : "C:/source/ezmlr/DESCRIPTION",
     "project_path" : "DESCRIPTION",
     "properties" : {
-        "cursorPosition" : "25,9",
-        "scrollLine" : "0"
+        "cursorPosition" : "22,8",
+        "scrollLine" : "1"
     },
     "relative_order" : 2,
     "source_on_save" : false,

@@ -20,7 +20,7 @@ Depends:
   R (>= 3.4.2),
   mlr (>= 2.11),
   mlrMBO (>= 1.1.1)
-Imports:
+Suggests:
   glmnet,
   randomForest,
   xgboost
