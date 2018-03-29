@@ -13,7 +13,7 @@
 #' @param ... Additional arguments to pass to \code{\link[mlr]{makeDummyFeaturesWrapper}}
 #'
 #' @export
-autoDummy = function(task, wl, ...) {
+autoDummy = function(wl, task, ...) {
 
   td = getTaskDesc(task)
 

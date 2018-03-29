@@ -6,14 +6,14 @@ makeStrategy.autoxgb = function() {
     if (getTaskType(task) == "classif") {
 
       wl = makeLearner("classif.xgboost")
-      wl = autoImpute(td, wl)
-      wl = autoDummy(td, wl)
+      wl = autoImpute(wl, task)
+      wl = autoDummy(wl, task)
 
     } else if (getTaskType(task) == "regr") {
 
       wl = makeLearner("regr.xgboost")
-      wl = autoImpute(td, wl)
-      wl = autoDummy(td, wl)
+      wl = autoImpute(wl, task)
+      wl = autoDummy(wl, task)
 
     } else {
       stop("Supported task types are 'classif' and 'regr'")

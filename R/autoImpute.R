@@ -21,7 +21,7 @@
 #' @param ... Additional arguments to pass to \code{\link[mlr]{makeImputeWrapper}}
 #'
 #' @export
-autoImpute = function(task, wl, classes = NULL, dummy.classes = c("numeric", "integer", "factor"),
+autoImpute = function(wl, task, classes = NULL, dummy.classes = c("numeric", "integer", "factor"),
                       dummy.type = "numeric", ...) {
 
   td = getTaskDesc(task)
