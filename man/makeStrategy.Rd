@@ -4,7 +4,7 @@
 \alias{makeStrategy}
 \title{Specify your own learning strategy.}
 \usage{
-makeStrategy(id, name = id, properties, fun)
+makeStrategy(id, name = id, task.type = NULL, properties = NULL, fun)
 }
 \arguments{
 \item{id}{(\code{character(1)})\cr
@@ -12,6 +12,9 @@ Name of the strategy.}
 
 \item{name}{(\code{character(1)})\cr
 Long name of the strategy. Default is \code{id}.}
+
+\item{task.type}{(\link{character})\cr
+Supported task types of the strategy, e.g. 'classif', 'regr', etc.}
 
 \item{properties}{(\link{character})\cr
 Supported learner properties of the strategy, e.g. 'numerics', 'factors', 'missings', etc.}
@@ -23,9 +26,6 @@ Takes a \code{Task} and returns a wrapped \code{Learner} customized to the task.
 \item{\code{task} (\link{Task})}{The task around which to build the learning strategy.}
 \item{\code{pars} (\code{list})}{An optional list of parameters to override the defaults.}
 }}
-
-\item{task.type}{(\link{character})\cr
-Supported task types of the strategy, e.g. 'classif', 'regr', etc.}
 }
 \value{
 (\link{Strategy}).
