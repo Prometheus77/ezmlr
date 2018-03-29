@@ -8,8 +8,8 @@
 #' level with a 1 indicating that observation contained the factor level in
 #' question, and a zero indicating otherwise.
 #'
-#' @param task (`Task`) An mlr Task.
 #' @param wl (`WrappedLearner`) An ezmlr WrappedLearner object.
+#' @param task (`Task`) An mlr Task.
 #' @param ... Additional arguments to pass to \code{\link[mlr]{makeDummyFeaturesWrapper}}
 #'
 #' @export

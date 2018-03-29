@@ -4,12 +4,12 @@
 \alias{autoDummy}
 \title{Automatically replace factors with dummy features.}
 \usage{
-autoDummy(task, wl, ...)
+autoDummy(wl, task, ...)
 }
 \arguments{
-\item{task}{(\code{Task}) An mlr Task.}
-
 \item{wl}{(\code{WrappedLearner}) An ezmlr WrappedLearner object.}
+
+\item{task}{(\code{Task}) An mlr Task.}
 
 \item{...}{Additional arguments to pass to \code{\link[mlr]{makeDummyFeaturesWrapper}}}
 }

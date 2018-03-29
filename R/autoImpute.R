@@ -8,8 +8,8 @@
 #' missings were present performed, where 1 indicates that the observation was
 #' missing in the original column.
 #'
-#' @param task (`Task`) An mlr Task.
 #' @param wl (`WrappedLearner`) An ezmlr WrappedLearner object.
+#' @param task (`Task`) An mlr Task.
 #' @param classes (`list`) Named list containing imputation techniques for
 #'   classes of columns. Default is `list(numeric = imputeConstant(0), integer =
 #'   imputeConstant(0), factor = imputeConstant(0))`.
@@ -33,7 +33,7 @@ autoImpute = function(wl, task, classes = NULL, dummy.classes = c("numeric", "in
   }
 
   if (td$has.missings == TRUE &
-      "missings" %in% getLearnerProperties(wl)) {
+      !("missings" %in% getLearnerProperties(wl))) {
     wl = makeImputeWrapper(wl, classes = classes, dummy.classes = dummy.classes, dummy.type = dummy.type, ...)
   }
 

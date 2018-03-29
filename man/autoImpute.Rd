@@ -4,13 +4,13 @@
 \alias{autoImpute}
 \title{Automatic imputation of missing values}
 \usage{
-autoImpute(task, wl, classes = NULL, dummy.classes = c("numeric", "integer",
+autoImpute(wl, task, classes = NULL, dummy.classes = c("numeric", "integer",
   "factor"), dummy.type = "numeric", ...)
 }
 \arguments{
-\item{task}{(\code{Task}) An mlr Task.}
-
 \item{wl}{(\code{WrappedLearner}) An ezmlr WrappedLearner object.}
+
+\item{task}{(\code{Task}) An mlr Task.}
 
 \item{classes}{(\code{list}) Named list containing imputation techniques for
 classes of columns. Default is \code{list(numeric = imputeConstant(0), integer = imputeConstant(0), factor = imputeConstant(0))}.}
