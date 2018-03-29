@@ -1,0 +1,27 @@
+Package: ezmlr
+Type: Package
+Title: Easy Interface to mlr
+Description: ezmlr is an add-on to the mlr package that allows for quick and easy configuration of 
+  several common and useful learners along with appropriate preprocessing, feature filtering,
+  downsampling, and tuning based on attributes of the dataset being trained. The purpose is to provide
+  a quick and easy way to build a reasonably accurate model with a single function, while also providing
+  insightful information about the inner workings of the model.
+Version: 0.1.0
+Authors@R: c(
+  person("Aaron", "Cooley", email = "aaronsama@gmail.com", role = c("aut", "cre")),
+  person("Sachin", "Badve", email = "sachinbadve@gmail.com", role = "ctb"))
+URL: https://github.com/Prometheus77/ezmlr
+BugReports: https://github.com/Prometheus77/ezmlr/issues
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(wrap = FALSE, markdown = TRUE)
+Depends: 
+  R (>= 3.4.2),
+  mlr (>= 2.11),
+  mlrMBO (>= 1.1.1)
+Imports:
+  glmnet,
+  randomForest,
+  xgboost
+RoxygenNote: 6.0.1

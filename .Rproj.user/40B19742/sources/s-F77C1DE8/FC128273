@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1522342616363.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1861060883",
+    "id" : "FC128273",
+    "lastKnownWriteTime" : 1522348824,
+    "last_content_update" : 1522348824950,
+    "path" : "C:/source/ezmlr/R/makeWrappedLearner.R",
+    "project_path" : "R/makeWrappedLearner.R",
+    "properties" : {
+        "cursorPosition" : "44,12",
+        "scrollLine" : "30",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
