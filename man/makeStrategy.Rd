@@ -4,7 +4,8 @@
 \alias{makeStrategy}
 \title{Specify your own learning strategy.}
 \usage{
-makeStrategy(id, name = id, task.type = NULL, properties = NULL, fun)
+makeStrategy(id, name = id, task.type = NULL, properties = NULL,
+  base.learner = NULL, wrappers = NULL, fun)
 }
 \arguments{
 \item{id}{(\code{character(1)})\cr
@@ -18,6 +19,12 @@ Supported task types of the strategy, e.g. 'classif', 'regr', etc.}
 
 \item{properties}{(\link{character})\cr
 Supported learner properties of the strategy, e.g. 'numerics', 'factors', 'missings', etc.}
+
+\item{base.learner}{(\link{character})\cr
+Base learner or learners that strategy uses}
+
+\item{wrappers}{(\link{character})\cr
+Wrapper or wrappers that strategy uses}
 
 \item{fun}{(\code{function(task, pars)})\cr
 Takes a \code{Task} and returns a wrapped \code{Learner} customized to the task.

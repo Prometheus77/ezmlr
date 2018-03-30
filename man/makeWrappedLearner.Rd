@@ -4,34 +4,27 @@
 \alias{makeWrappedLearner}
 \title{Build a wrapped learner using a specified learning strategy.}
 \usage{
-makeWrappedLearner(strategy, id = strategy, task, predict.type = "response",
-  predict.threshold = NULL, fix.factors.prediction = FALSE, ...,
-  strategy.pars = list(), learner.pars = list(), config = list())
+makeWrappedLearner(strategy, id = strategy, task, strategy.pars = list(),
+  learner.pars = list(), ..., predict.type = NULL,
+  predict.threshold = NULL, fix.factors.prediction = TRUE, config = NULL)
 }
 \arguments{
 \item{strategy}{(\code{character(1)})\cr
-Name of the strategy to use for tuning.}
+Name (short name) of the strategy to use for training.}
 
-\item{name}{(\code{character(1)})\cr
-Long name of the strategy. Default is \code{id}.}
+\item{id}{(\code{character(1)})\cr
+Learner ID. Default is \code{strategy}.}
 
-\item{properties}{(\link{character})\cr
-Set of strategy properties.
-\describe{
-\item{prop1}{Property1}
-\item{prop2}{Property2}
-}}
+\item{task}{(\code{\link[mlr]{Task}})\cr
+Task to which the strategy should be applied.}
 
-\item{fun}{(\code{function(task, pars)})\cr
-Takes a \code{Task} and returns a wrapped \code{Learner} customized to the task.
-\code{pars} may be added optionally to override default strategy settings.
-\describe{
-\item{\code{task} (\link{Task})}{The task around which to build the learning strategy.}
-\item{\code{pars} (\code{list})}{An optional list of parameters to override the defaults.}
-}}
-}
-\value{
-(\link{Strategy}).
+\item{strategy.pars}{(\code{list})\cr
+Optional parameters to pass to the strategy.
+These will vary strategy by strategy.}
+
+\item{learner.pars}{(\code{list})\cr
+Optional parameters to pass to the wrapped
+learner. These are the standard parameters used by each learner in \code{mlr}.}
 }
 \description{
 Follows a specified learning strategy (\code{Strategy}) to create a wrapped learner
@@ -44,10 +37,4 @@ customized to a specific task. May include things such as:
 \item Upsampling/downsampling
 \item Hyperparameter tuning
 }
-}
-\examples{
-# TBD
-}
-\seealso{
-\link{strategies}
 }

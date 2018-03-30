@@ -17,3 +17,23 @@ addMissing = function(task, pct = 0.1) {
     stop("Task type must be 'classif' or 'regr'")
   }
 }
+
+isRegrTask = function(task) {
+  x = try(getTaskType(task), silent = TRUE)
+  (x == "regr")
+}
+
+isClassifTask = function(task) {
+  x = try(getTaskType(task), silent = TRUE)
+  (x == "classif")
+}
+
+isBinaryClassTask = function(task) {
+  n = try(length(getTaskClassLevels(task)), silent = TRUE)
+  (isClassifTask(task) & n == 2)
+}
+
+isMultiClassTask = function(task) {
+  n = try(length(getTaskClassLevels(task)), silent = TRUE)
+  (isClassifTask(task) & n > 2)
+}
