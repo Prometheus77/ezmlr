@@ -37,3 +37,21 @@ isMultiClassTask = function(task) {
   n = try(length(getTaskClassLevels(task)), silent = TRUE)
   (isClassifTask(task) & n > 2)
 }
+
+`%==%` <- function(x, y)
+{
+  if ((is_empty(x) || is_empty(y)) && !is.null(x) && !is.null(y))
+  {
+    return(is_empty(x) == is_empty(y))
+  } else if (is.null(x) || is.null(y)) {
+    return(is.null(x) == is.null(y))
+  } else if (is.na(x) || is.na(y)) {
+    return(is.na(x) == is.na(y))
+  } else {
+    return(x == y)
+  }
+}
+
+is_empty <- function(x) {
+  length(x) == 0
+}

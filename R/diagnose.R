@@ -43,8 +43,8 @@
 #'   `plotCalibration`?
 #' @param ... Additional arguments to pass to each plot.
 #' @export
-diagnose = function(obj, task, plots = NULL, threshVsPerf = NULL, ROCCurve = NULL,
-                    residuals = NULL, learningCurve = NULL, filterValues = NULL,
+diagnose = function(obj, task, plots = NULL, file = file.path(getwd(), "plots.pdf"), threshVsPerf = NULL,
+                    ROCCurve = NULL, residuals = NULL, learningCurve = NULL, filterValues = NULL,
                     hyperParsEffect = NULL, optPath = NULL, tuneMultiCritResult = NULL,
                     PartialDependence = NULL, calibration = NULL, ...) {
 
@@ -55,15 +55,43 @@ diagnose = function(obj, task, plots = NULL, threshVsPerf = NULL, ROCCurve = NUL
   if ("WrappedModel" %in% class(obj)) {
 
     obj_type = "model"
-    if (!hasArg("threshVsPerf") & isBinaryClassTask(obj)) threshVsPerf = TRUE else threshVsPerf = FALSE
-    if (!hasArg("ROCCurve") & isBinaryClassTask(obj)) ROCCurve = TRUE else ROCCurve = FALSE
-    if (!hasArg("residuals") & isRegrTask(obj)) residuals = TRUE else residuals = FALSE
+    if (!hasArg("threshVsPerf") & isBinaryClassTask(obj)) threshVsPerf = TRUE
+    if (!hasArg("ROCCurve") & isBinaryClassTask(obj)) ROCCurve = TRUE
+    if (!hasArg("residuals") & isRegrTask(obj)) residuals = TRUE
+    if (!hasArg("partialDependence")) partialDependence = TRUE
+    if (!hasArg("calibration") & isBinaryClassTask(obj)) calibration = TRUE
 
     pred = predict(obj, task = task)
 
-    if (threshVsPerf == TRUE) {
+    if (threshVsPerf %==% TRUE) {
       tvp = generateThreshVsPerfData(pred)
-      plot_out <- c(plot_out, tvp)
+      plot_out[[length(plot_out) + 1]] = plotThreshVsPerf(tvp) +
+        ggplot2::labs(title = "Threshold Vs. Performance",
+                      caption = "Caution: Predictions on training data and are likely to suffer from overfitting")
+    }
+
+    if (ROCCurve %==% TRUE) {
+      tvp = generateThreshVsPerfData(pred, measures = list(fpr, tpr))
+      plot_out[[length(plot_out) + 1]] = plotROCCurves(tvp) +
+        ggplot2::labs(title = "Receiver Operating Characteristic (ROC) Curve",
+                      caption = "Caution: Predictions on training data and are likely to suffer from overfitting")
+
+    }
+
+    if (residuals %==% TRUE) {
+      plot_out[[length(plot_out) + 1]] = plotResiduals(pred)
+    }
+
+    if (partialDependence %==% TRUE) {
+      pdd = generatePartialDependenceData(obj, getTaskData(task))
+      plot_out[[length(plot_out) + 1]] = plotPartialDependence(pdd) +
+        ggplot2::labs(title = "Partial Dependence of Target on Predictor Features")
+    }
+
+    if (calibration %==% TRUE) {
+      cal = generateCalibrationData(pred)
+      plot_out[[length(plot_out) + 1]] = plotCalibration(cal) +
+        ggplot2::labs(title = "Calibration of Probability Predictions vs. True Incidence")
     }
 
   } else if ("Learner" %in% class(obj)) {
@@ -77,5 +105,10 @@ diagnose = function(obj, task, plots = NULL, threshVsPerf = NULL, ROCCurve = NUL
     stop("'obj' must be one of class 'WrappedModel', 'Learner', or 'Strategy'")
   }
 
+  pdf(file)
+  for (p in plot_out) print(p)
+  dev.off()
+  message(paste0("Plots saved to ", file))
 
+  plot_out
 }
