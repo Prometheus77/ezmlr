@@ -57,7 +57,7 @@ diagnose = function(obj, task, plots = NULL, file = file.path(getwd(), "plots.pd
     obj_type = "model"
     if (!hasArg("threshVsPerf") & isBinaryClassTask(obj)) threshVsPerf = TRUE
     if (!hasArg("ROCCurve") & isBinaryClassTask(obj)) ROCCurve = TRUE
-    if (!hasArg("residuals") & isRegrTask(obj)) residuals = TRUE
+    if (!hasArg("residuals")) residuals = TRUE
     if (!hasArg("partialDependence")) partialDependence = TRUE
     if (!hasArg("calibration") & isBinaryClassTask(obj)) calibration = TRUE
 
